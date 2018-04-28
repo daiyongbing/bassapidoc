@@ -1,0 +1,18 @@
+site_name: BaaSApi接口文档
+site_url: 
+repo_url: https://github.com/daiyongbing/BaaSApiDoc
+site_description: 'BaaSApi接口文档'
+
+site_author: 
+copyright: 
+
+theme: readthedocs
+
+pages:
+    - 欢迎: index.md
+    - repChain接口设计: repChainApiDesign.md
+    - API使用说明: APIInstructions.md
+
+markdown_extensions:
+  - extra
+  - tables
