@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>API使用说明 - BaaSApi接口文档</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "API\u4f7f\u7528\u8bf4\u660e";
+    var mkdocs_page_input_path = "APIInstructions.md";
+    var mkdocs_page_url = "/APIInstructions/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> BaaSApi接口文档</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">欢迎</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../repChainApiDesign/">repChain接口设计</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">API使用说明</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#21">2.1 简介</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#211-api">2.1.1 API 快速入门</a></li>
+        
+            <li><a class="toctree-l3" href="#22-api">2.2 API 概览</a></li>
+        
+            <li><a class="toctree-l3" href="#23">2.3 交易相关接口</a></li>
+        
+            <li><a class="toctree-l3" href="#24">2.4 错误码</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">BaaSApi接口文档</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>API使用说明</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/daiyongbing/baasapidoc/edit/master/docs/APIInstructions.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="21">2.1 简介</h1>
+<p>享链云区块链致力于为企业提供金融级别区块链基础设施服务，通过区块链云上的服务，为行业提供安全、可靠、灵活的解决方案。打造一个开放分享、能力全面，标准统一的区块链生态圈，
+为众多行业客户提供完备的区块链服务。</p>
+<h3 id="211-api">2.1.1 API 快速入门</h3>
+<p>API分为交易查询和交易发起两大类。</p>
+<p><strong>“交易查询”接口：</strong> 查询对象的属性值，例如区块信息、交易信息、证书信息等。查询操作不会更改账本状态。</p>
+<p><strong>“交易发起”接口：</strong> 交易的发起包含deploy和invoke两种操作，涉及对账本属性的查询或更改。</p>
+<h2 id="22-api">2.2 API 概览</h2>
+<p><strong>交易相关接口</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">接口名</th>
+<th align="left">请求地址</th>
+<th align="center">请求方式</th>
+<th align="left">功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">系统启动</td>
+<td align="left">/system/start</td>
+<td align="center">GET</td>
+<td align="left">启动系统</td>
+</tr>
+<tr>
+<td align="center">系统停止</td>
+<td align="left">/system/stop</td>
+<td align="center">GET</td>
+<td align="left">停止系统</td>
+</tr>
+<tr>
+<td align="center">查询区块</td>
+<td align="left">/block</td>
+<td align="center">GET</td>
+<td align="left">查询指定高度的区块信息</td>
+</tr>
+<tr>
+<td align="center">查询区块</td>
+<td align="left">/block/hash</td>
+<td align="center">GET</td>
+<td align="left">查询指定ID的区块信息</td>
+</tr>
+<tr>
+<td align="center">查询块链信息</td>
+<td align="left">/chaininfo</td>
+<td align="center">GET</td>
+<td align="left">查询当期块链信息</td>
+</tr>
+<tr>
+<td align="center">查询交易</td>
+<td align="left">/transaction</td>
+<td align="center">GET</td>
+<td align="left">查询指定ID的交易</td>
+</tr>
+<tr>
+<td align="center">查询证书短地址</td>
+<td align="left">/certAddr/getCertByAddr</td>
+<td align="center">POST</td>
+<td align="left">由证书字符串查询证书短地址</td>
+</tr>
+<tr>
+<td align="center">查询证书字符串</td>
+<td align="left">/certAddr/getAddrByCert</td>
+<td align="center">POST</td>
+<td align="left">由证书短地址查询证书字符串</td>
+</tr>
+<tr>
+<td align="center">发起交易</td>
+<td align="left">/transaction</td>
+<td align="center">POST</td>
+<td align="left">发起交易，包含deploy和invoke</td>
+</tr>
+</tbody>
+</table>
+<h2 id="23">2.3 交易相关接口</h2>
+<h3 id="231">2.3.1 查询接口</h3>
+<p><strong>1. 启动系统</strong></p>
+<p><strong>接口描述</strong></p>
+<p>本接口用于启动repchain服务</p>
+<p>接口请求域名：http://www.repchain.net.org/system/start/</p>
+<p>输入参数</p>
+<table>
+<thead>
+<tr>
+<th align="center">参数名</th>
+<th align="center">是否必须</th>
+<th align="center">参数类型</th>
+<th align="left">参数说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">starCount</td>
+<td align="center">是</td>
+<td align="center">int</td>
+<td align="left">启动数量</td>
+</tr>
+</tbody>
+</table>
+<p><strong>输出参数</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">参数名</th>
+<th align="center">参数类型</th>
+<th align="left">参数说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">code</td>
+<td align="center">int</td>
+<td align="left">错误码</td>
+</tr>
+<tr>
+<td align="center">result</td>
+<td align="center">json</td>
+<td align="left">执行返回json数据</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例</strong></p>
+<p>输入</p>
+<pre><code>GET &quot;http://localhost:8081/system/start/5&quot; -H  &quot;accept: application/json&quot;
+</code></pre>
+
+<pre><code>{
+  &quot;result&quot;: {
+    &quot;status&quot;: &quot;success&quot;
+  }
+}
+</code></pre>
+
+<p><strong>2. 停止系统</strong></p>
+<p><strong>接口描述</strong></p>
+<p>本接口用于停止repchain服务</p>
+<p>接口请求域名：http://www.repchain.net.org/system/stop/</p>
+<p>输入参数</p>
+<table>
+<thead>
+<tr>
+<th align="center">参数名</th>
+<th align="center">是否必须</th>
+<th align="center">参数类型</th>
+<th align="left">参数说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">from</td>
+<td align="center">是</td>
+<td align="center">int</td>
+<td align="left">开始位置</td>
+</tr>
+<tr>
+<td align="center">to</td>
+<td align="center">是</td>
+<td align="center">int</td>
+<td align="left">结束位置</td>
+</tr>
+</tbody>
+</table>
+<p><strong>输出参数</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">参数名</th>
+<th align="center">参数类型</th>
+<th align="center">参数说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">code</td>
+<td align="center">int</td>
+<td align="center">错误码；200：成功；其它：失败</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例</strong></p>
+<p>输入</p>
+<pre><code>GET &quot;http://localhost:8081/system/stop/5/6&quot; -H  &quot;accept: application/json&quot;
+</code></pre>
+
+<p>输出</p>
+<pre><code>{
+  &quot;result&quot;: {
+    &quot;status&quot;: &quot;success&quot;
+  }
+}
+</code></pre>
+
+<p><strong>3. 根据blockId查询区块</strong></p>
+<p><strong>接口描述</strong></p>
+<p>本接口用于用于查询指定ID的区块详细信息</p>
+<p>接口请求域名：http://www.repchain.net.org/block/hash/</p>
+<p>输入参数</p>
+<table>
+<thead>
+<tr>
+<th align="center">参数名</th>
+<th align="center">是否必须</th>
+<th align="center">参数类型</th>
+<th align="left">参数说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">blockId</td>
+<td align="center">是</td>
+<td align="center">string</td>
+<td align="left">区块hash值</td>
+</tr>
+</tbody>
+</table>
+<p><strong>输出参数</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">参数名</th>
+<th align="center">参数类型</th>
+<th align="center">参数说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">code</td>
+<td align="center">int</td>
+<td align="center">错误码；200：成功；其它：失败</td>
+</tr>
+<tr>
+<td align="center">result</td>
+<td align="center">json</td>
+<td align="center">查询返回的区块信息</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例</strong></p>
+<p>输入</p>
+<pre><code>GET &quot;http://localhost:8081/block/hash/YWU4YTViODFlMzJkZTc1MDA3YzgyMDA2NjFiNzQyYzQ0NDg5MDgyNzIzNjY1NjZjNDU2MWVhNDUwNTU2Y2E5MQ%3D&quot; -H  &quot;accept: application/json&quot;
+</code></pre>
+
+<p>输出</p>
+<pre><code>{
+  &quot;result&quot;: {
+    &quot;version&quot;: 1,
+    &quot;timestamp&quot;: &quot;2018-04-20T10:38:44.441Z&quot;,
+    &quot;transactions&quot;: [
+      {
+        &quot;type&quot;: &quot;CHAINCODE_INVOKE&quot;,
+        &quot;chaincodeID&quot;: &quot;cGF0aDogInBhdGgiCm5hbWU6ICJhZGRkODNkYTljMDY1YzE5ZTFlMzkyY2Q4ZGNhMGQ1MjY4Mzk4YTExZmNiNjU0ZTVmMWMxYWE3MzFhMGFjMDVjIgo=&quot;,
+        &quot;payload&quot;: {
+          &quot;chaincodeID&quot;: {
+            &quot;path&quot;: &quot;path&quot;,
+            &quot;name&quot;: &quot;addd83da9c065c19e1e392cd8dca0d5268398a11fcb654e5f1c1aa731a0ac05c&quot;
+          },
+          &quot;ctorMsg&quot;: {
+            &quot;function&quot;: &quot;put_proof('cd300ff59c988ef1183c3dbd4318e502706881794249e734146cee51837e3dfb','eyJvd25lcl9hY2NvdW50X2FkZHJlc3MiOiIxTUg5eGVkUFRrV1RoSlVnVDhaWWVoaUdDTTdiRVpUVkdOIiwiaGFzaF9hbGdvcml0aG0iOnsibmFtZSI6InNoYTI1NiIsInBhcmFtZXRlciI6IiJ9LCJwaWN0dXJlX2RpZ2l0YWxfaWRlbnRpdHkiOiJjZDMwMGZmNTljOTg4ZWYxMTgzYzNkYmQ0MzE4ZTUwMjcwNjg4MTc5NDI0OWU3MzQxNDZjZWU1MTgzN2UzZGZiIiwicGljdHVyZV9kZXNjIjp7ImF1dGhvciI6InZpYyIsIm5hbWUiOiLlj6/op4bljJbnlYzpnaIiLCJkZXNjIjoiIiwiZmlsZV90eXBlIjoiaW1hZ2UvcG5nIiwiZmlsZV9zaXplIjoyODgxNH19');&quot;
+          },
+          &quot;timeout&quot;: 1000,
+          &quot;secureContext&quot;: &quot;secureContext&quot;,
+          &quot;codePackage&quot;: &quot;c3RyaW5n&quot;
+        },
+        &quot;metadata&quot;: &quot;rO0ABXNyACBzY2FsYS5jb2xsZWN0aW9uLm11dGFibGUuSGFzaE1hcAAAAAAAAAABAwAAeHB3DQAAAu4AAAABAAAABAB0AINjX2FkZGQ4M2RhOWMwNjVjMTllMWUzOTJjZDhkY2EwZDUyNjgzOThhMTFmY2I2NTRlNWYxYzFhYTczMWEwYWMwNWNfY2QzMDBmZjU5Yzk4OGVmMTE4M2MzZGJkNDMxOGU1MDI3MDY4ODE3OTQyNDllNzM0MTQ2Y2VlNTE4MzdlM2RmYnB4&quot;,
+        &quot;txid&quot;: &quot;f1b88720-4443-11e8-b8d5-2de829164969&quot;,
+        &quot;timestamp&quot;: &quot;2018-04-20T02:38:44.370Z&quot;,
+        &quot;confidentialityLevel&quot;: &quot;CONFIDENTIAL&quot;,
+        &quot;confidentialityProtocolVersion&quot;: &quot;confidentialityProtocolVersion-1.0&quot;,
+        &quot;nonce&quot;: &quot;bm9uY2U=&quot;,
+        &quot;toValidators&quot;: &quot;dG9WYWxpZGF0b3Jz&quot;,
+        &quot;cert&quot;: &quot;MU1IOXhlZFBUa1dUaEpVZ1Q4WlllaGlHQ003YkVaVFZHTg==&quot;,
+        &quot;signature&quot;: &quot;MEYCIQCjt0IjQfJbJSOChnLHXAWIqFqN3NYQhGEvRp7O7LzUWQIhAO6pkOjpKeSjDeRADu7MLMsbfrH3n1Tz2kqd3Ei/VfFf&quot;
+      }
+    ],
+    &quot;stateHash&quot;: &quot;ODlmYjQzZjk5MDY5YjM3Y2NjMDQyYmFjODEzMmVlYmFjMzJiMzI5NDhhODM3ZjdiNGViZDcwMmEyYzNkYTdmYw==&quot;,
+    &quot;previousBlockHash&quot;: &quot;NzlkYzFjZTc4MTg1NjQxOTEwMGEyNGJlODIwYjc0NTQ3MDEwYjc5ZjdlNTAxNjhlZGU0NWJkNzNhNzI2YmIxNw==&quot;,
+    &quot;consensusMetadata&quot;: [
+      {
+        &quot;endorser&quot;: &quot;MTJrQXpxcWh1cTd4WWdtOVlUcGgxYjl6bUNwWlB5VVd4Zg==&quot;,
+        &quot;signature&quot;: &quot;MEUCIQC/eZxxdj6gbfNlTkvdgMp7LAurE0dsCG+t9FCvYSS3IgIgBEMNUkhVWPccMd/DHkSL8mP27sT2d2tFVW6lwnA1Wq8=&quot;
+      },
+      {
+        &quot;endorser&quot;: &quot;MUFxWnM2dmhjTGlpVHZGeHFTNUNFcU13NnhXdVg5eHF5aQ==&quot;,
+        &quot;signature&quot;: &quot;MEQCIFn+pip8VjX6oUB2MWfnIsvetfhq9svpNvVKf6Qk4IBIAiAA5yPjzS9lg8aMGx/cJSERuzUlyD8E/QB0xeOEY2p8hw==&quot;
+      },
+      {
+        &quot;endorser&quot;: &quot;MUd2dkhDRlpQYWpxNXlWWTQ0bjdiZG1TZnYyTUo1THlMcw==&quot;,
+        &quot;signature&quot;: &quot;MEUCIQCMCzktu03gPxBNnkdK1AYlb85oReCcDzZ8beALIQRPCQIgDbNjyJBI9s9D5Hx1JMNAK/g799GNOkPK/zA7xOeXUXw=&quot;
+      }
+    ],
+    &quot;nonHashData&quot;: {
+      &quot;localLedgerCommitTimestamp&quot;: &quot;2018-04-20T10:38:44.455Z&quot;,
+      &quot;transactionResults&quot;: [
+        {
+          &quot;txid&quot;: &quot;f1b88720-4443-11e8-b8d5-2de829164969&quot;,
+          &quot;ol&quot;: [
+            {
+              &quot;key&quot;: &quot;cd300ff59c988ef1183c3dbd4318e502706881794249e734146cee51837e3dfb&quot;,
+              &quot;newValue&quot;: &quot;ImV5SnZkMjVsY2w5aFkyTnZkVzUwWDJGa1pISmxjM01pT2lJeFRVZzVlR1ZrVUZSclYxUm9TbFZuVkRoYVdXVm9hVWREVFRkaVJWcFVWa2RPSWl3aWFHRnphRjloYkdkdmNtbDBhRzBpT25zaWJtRnRaU0k2SW5Ob1lUSTFOaUlzSW5CaGNtRnRaWFJsY2lJNklpSjlMQ0p3YVdOMGRYSmxYMlJwWjJsMFlXeGZhV1JsYm5ScGRIa2lPaUpqWkRNd01HWm1OVGxqT1RnNFpXWXhNVGd6WXpOa1ltUTBNekU0WlRVd01qY3dOamc0TVRjNU5ESTBPV1UzTXpReE5EWmpaV1UxTVRnek4yVXpaR1ppSWl3aWNHbGpkSFZ5WlY5a1pYTmpJanA3SW1GMWRHaHZjaUk2SW5acFl5SXNJbTVoYldVaU9pTGxqNi9vcDRibGpKYm5sWXpwbmFJaUxDSmtaWE5qSWpvaUlpd2labWxzWlY5MGVYQmxJam9pYVcxaFoyVXZjRzVuSWl3aVptbHNaVjl6YVhwbElqb3lPRGd4TkgxOSI=&quot;
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+</code></pre>
+
+<p><strong>4. 查询指定高度的区块</strong></p>
+<p><strong>接口描述</strong></p>
+<p>本接口用于用于查询指定高度的区块详细信息</p>
+<p>接口请求域名：http://www.repchain.net.org/block/</p>
+<p>输入参数</p>
+<table>
+<thead>
+<tr>
+<th align="center">参数名</th>
+<th align="center">是否必须</th>
+<th align="center">参数类型</th>
+<th align="left">参数说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">blockHeight</td>
+<td align="center">是</td>
+<td align="center">int</td>
+<td align="left">区块高度</td>
+</tr>
+</tbody>
+</table>
+<p>输出参数</p>
+<table>
+<thead>
+<tr>
+<th align="center">参数名</th>
+<th align="center">参数类型</th>
+<th align="center">参数说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">code</td>
+<td align="center">int</td>
+<td align="center">错误码；200：成功；其它：失败</td>
+</tr>
+<tr>
+<td align="center">result</td>
+<td align="center">json</td>
+<td align="center">查询返回的区块信息</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例</strong></p>
+<p>输入</p>
+<pre><code>GET &quot;http://localhost:8081/block/15052&quot; -H  &quot;accept: application/json&quot;
+</code></pre>
+
+<p>输出</p>
+<pre><code>{
+  &quot;result&quot;: {
+    &quot;version&quot;: 1,
+    &quot;timestamp&quot;: &quot;2018-04-20T10:38:44.441Z&quot;,
+    &quot;transactions&quot;: [
+      {
+        &quot;type&quot;: &quot;CHAINCODE_INVOKE&quot;,
+        &quot;chaincodeID&quot;: &quot;cGF0aDogInBhdGgiCm5hbWU6ICJhZGRkODNkYTljMDY1YzE5ZTFlMzkyY2Q4ZGNhMGQ1MjY4Mzk4YTExZmNiNjU0ZTVmMWMxYWE3MzFhMGFjMDVjIgo=&quot;,
+        &quot;payload&quot;: {
+          &quot;chaincodeID&quot;: {
+            &quot;path&quot;: &quot;path&quot;,
+            &quot;name&quot;: &quot;addd83da9c065c19e1e392cd8dca0d5268398a11fcb654e5f1c1aa731a0ac05c&quot;
+          },
+          &quot;ctorMsg&quot;: {
+            &quot;function&quot;: &quot;put_proof('cd300ff59c988ef1183c3dbd4318e502706881794249e734146cee51837e3dfb','eyJvd25lcl9hY2NvdW50X2FkZHJlc3MiOiIxTUg5eGVkUFRrV1RoSlVnVDhaWWVoaUdDTTdiRVpUVkdOIiwiaGFzaF9hbGdvcml0aG0iOnsibmFtZSI6InNoYTI1NiIsInBhcmFtZXRlciI6IiJ9LCJwaWN0dXJlX2RpZ2l0YWxfaWRlbnRpdHkiOiJjZDMwMGZmNTljOTg4ZWYxMTgzYzNkYmQ0MzE4ZTUwMjcwNjg4MTc5NDI0OWU3MzQxNDZjZWU1MTgzN2UzZGZiIiwicGljdHVyZV9kZXNjIjp7ImF1dGhvciI6InZpYyIsIm5hbWUiOiLlj6/op4bljJbnlYzpnaIiLCJkZXNjIjoiIiwiZmlsZV90eXBlIjoiaW1hZ2UvcG5nIiwiZmlsZV9zaXplIjoyODgxNH19');&quot;
+          },
+          &quot;timeout&quot;: 1000,
+          &quot;secureContext&quot;: &quot;secureContext&quot;,
+          &quot;codePackage&quot;: &quot;c3RyaW5n&quot;
+        },
+        &quot;metadata&quot;: &quot;rO0ABXNyACBzY2FsYS5jb2xsZWN0aW9uLm11dGFibGUuSGFzaE1hcAAAAAAAAAABAwAAeHB3DQAAAu4AAAABAAAABAB0AINjX2FkZGQ4M2RhOWMwNjVjMTllMWUzOTJjZDhkY2EwZDUyNjgzOThhMTFmY2I2NTRlNWYxYzFhYTczMWEwYWMwNWNfY2QzMDBmZjU5Yzk4OGVmMTE4M2MzZGJkNDMxOGU1MDI3MDY4ODE3OTQyNDllNzM0MTQ2Y2VlNTE4MzdlM2RmYnB4&quot;,
+        &quot;txid&quot;: &quot;f1b88720-4443-11e8-b8d5-2de829164969&quot;,
+        &quot;timestamp&quot;: &quot;2018-04-20T02:38:44.370Z&quot;,
+        &quot;confidentialityLevel&quot;: &quot;CONFIDENTIAL&quot;,
+        &quot;confidentialityProtocolVersion&quot;: &quot;confidentialityProtocolVersion-1.0&quot;,
+        &quot;nonce&quot;: &quot;bm9uY2U=&quot;,
+        &quot;toValidators&quot;: &quot;dG9WYWxpZGF0b3Jz&quot;,
+        &quot;cert&quot;: &quot;MU1IOXhlZFBUa1dUaEpVZ1Q4WlllaGlHQ003YkVaVFZHTg==&quot;,
+        &quot;signature&quot;: &quot;MEYCIQCjt0IjQfJbJSOChnLHXAWIqFqN3NYQhGEvRp7O7LzUWQIhAO6pkOjpKeSjDeRADu7MLMsbfrH3n1Tz2kqd3Ei/VfFf&quot;
+      }
+    ],
+    &quot;stateHash&quot;: &quot;ODlmYjQzZjk5MDY5YjM3Y2NjMDQyYmFjODEzMmVlYmFjMzJiMzI5NDhhODM3ZjdiNGViZDcwMmEyYzNkYTdmYw==&quot;,
+    &quot;previousBlockHash&quot;: &quot;NzlkYzFjZTc4MTg1NjQxOTEwMGEyNGJlODIwYjc0NTQ3MDEwYjc5ZjdlNTAxNjhlZGU0NWJkNzNhNzI2YmIxNw==&quot;,
+    &quot;consensusMetadata&quot;: [
+      {
+        &quot;endorser&quot;: &quot;MTJrQXpxcWh1cTd4WWdtOVlUcGgxYjl6bUNwWlB5VVd4Zg==&quot;,
+        &quot;signature&quot;: &quot;MEUCIQC/eZxxdj6gbfNlTkvdgMp7LAurE0dsCG+t9FCvYSS3IgIgBEMNUkhVWPccMd/DHkSL8mP27sT2d2tFVW6lwnA1Wq8=&quot;
+      },
+      {
+        &quot;endorser&quot;: &quot;MUFxWnM2dmhjTGlpVHZGeHFTNUNFcU13NnhXdVg5eHF5aQ==&quot;,
+        &quot;signature&quot;: &quot;MEQCIFn+pip8VjX6oUB2MWfnIsvetfhq9svpNvVKf6Qk4IBIAiAA5yPjzS9lg8aMGx/cJSERuzUlyD8E/QB0xeOEY2p8hw==&quot;
+      },
+      {
+        &quot;endorser&quot;: &quot;MUd2dkhDRlpQYWpxNXlWWTQ0bjdiZG1TZnYyTUo1THlMcw==&quot;,
+        &quot;signature&quot;: &quot;MEUCIQCMCzktu03gPxBNnkdK1AYlb85oReCcDzZ8beALIQRPCQIgDbNjyJBI9s9D5Hx1JMNAK/g799GNOkPK/zA7xOeXUXw=&quot;
+      }
+    ],
+    &quot;nonHashData&quot;: {
+      &quot;localLedgerCommitTimestamp&quot;: &quot;2018-04-20T10:38:44.455Z&quot;,
+      &quot;transactionResults&quot;: [
+        {
+          &quot;txid&quot;: &quot;f1b88720-4443-11e8-b8d5-2de829164969&quot;,
+          &quot;ol&quot;: [
+            {
+              &quot;key&quot;: &quot;cd300ff59c988ef1183c3dbd4318e502706881794249e734146cee51837e3dfb&quot;,
+              &quot;newValue&quot;: &quot;ImV5SnZkMjVsY2w5aFkyTnZkVzUwWDJGa1pISmxjM01pT2lJeFRVZzVlR1ZrVUZSclYxUm9TbFZuVkRoYVdXVm9hVWREVFRkaVJWcFVWa2RPSWl3aWFHRnphRjloYkdkdmNtbDBhRzBpT25zaWJtRnRaU0k2SW5Ob1lUSTFOaUlzSW5CaGNtRnRaWFJsY2lJNklpSjlMQ0p3YVdOMGRYSmxYMlJwWjJsMFlXeGZhV1JsYm5ScGRIa2lPaUpqWkRNd01HWm1OVGxqT1RnNFpXWXhNVGd6WXpOa1ltUTBNekU0WlRVd01qY3dOamc0TVRjNU5ESTBPV1UzTXpReE5EWmpaV1UxTVRnek4yVXpaR1ppSWl3aWNHbGpkSFZ5WlY5a1pYTmpJanA3SW1GMWRHaHZjaUk2SW5acFl5SXNJbTVoYldVaU9pTGxqNi9vcDRibGpKYm5sWXpwbmFJaUxDSmtaWE5qSWpvaUlpd2labWxzWlY5MGVYQmxJam9pYVcxaFoyVXZjRzVuSWl3aVptbHNaVjl6YVhwbElqb3lPRGd4TkgxOSI=&quot;
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+</code></pre>
+
+<p><strong>5. 查询当前块链信息</strong></p>
+<p><strong>接口描述</strong></p>
+<p>本接口用于用于查询指定ID的区块详细信息</p>
+<p>接口请求域名：http://www.repchain.net.org/chaininfo</p>
+<p>输入参数</p>
+<p>无输入参数</p>
+<p>输出参数</p>
+<table>
+    <tr>
+        <td>参数名</td>
+        <td>参数类型</td>
+        <td>参数格式</td>
+        <td>参数说明</td>
+    </tr>
+    <tr>
+        <td>code</td>
+        <td>int</td>
+        <td></td>
+        <td>错误码；200：成功；其它：失败</td>
+    </tr>
+    <tr>
+        <td>result</td>
+        <td>json</td>
+        <td>
+        "result": {</br>
+            &emsp;"height":</br>
+            &emsp;"totalTransactions":</br>
+            &emsp;"currentBlockHash":</br>
+            &emsp;"previousBlockHash":</br>
+            &emsp;"currentWorldStateHash":</br>
+        }
+        </td>
+        <td>查询返回的区块信息</td>
+    </tr>
+</table>
+
+<p><strong>示例</strong></p>
+<p>输入</p>
+<pre><code>GET &quot;http://localhost:8081/chaininfo&quot; -H  &quot;accept: application/json&quot;
+</code></pre>
+
+<p>输出</p>
+<pre><code>{
+  &quot;result&quot;: {
+    &quot;height&quot;: &quot;15052&quot;,
+    &quot;totalTransactions&quot;: &quot;150477&quot;,
+    &quot;currentBlockHash&quot;: &quot;YWU4YTViODFlMzJkZTc1MDA3YzgyMDA2NjFiNzQyYzQ0NDg5MDgyNzIzNjY1NjZjNDU2MWVhNDUwNTU2Y2E5MQ==&quot;,
+    &quot;previousBlockHash&quot;: &quot;NzlkYzFjZTc4MTg1NjQxOTEwMGEyNGJlODIwYjc0NTQ3MDEwYjc5ZjdlNTAxNjhlZGU0NWJkNzNhNzI2YmIxNw==&quot;,
+    &quot;currentWorldStateHash&quot;: &quot;ODlmYjQzZjk5MDY5YjM3Y2NjMDQyYmFjODEzMmVlYmFjMzJiMzI5NDhhODM3ZjdiNGViZDcwMmEyYzNkYTdmYw==&quot;
+  }
+}
+</code></pre>
+
+<p><strong>6. 根据transactionId查询交易</strong></p>
+<p><strong>接口描述</strong></p>
+<p>本接口用于用于查询指定ID的区块详细信息</p>
+<p>接口请求域名：http://www.repchain.net.org/transaction/</p>
+<p>输入参数</p>
+<table>
+<thead>
+<tr>
+<th align="center">参数名</th>
+<th align="center">是否必须</th>
+<th align="center">参数类型</th>
+<th align="left">参数说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">transactionId</td>
+<td align="center">是</td>
+<td align="center">int</td>
+<td align="left">交易ID</td>
+</tr>
+</tbody>
+</table>
+<p>输出参数</p>
+<table>
+<thead>
+<tr>
+<th align="center">参数名</th>
+<th align="center">参数类型</th>
+<th align="center">参数说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">code</td>
+<td align="center">int</td>
+<td align="center">错误码；200：成功；其它：失败</td>
+</tr>
+<tr>
+<td align="center">result</td>
+<td align="center">json</td>
+<td align="center">查询返回的交易信息</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例</strong></p>
+<p>输入</p>
+<pre><code>GET &quot;http://localhost:8081/transaction/f1b88720-4443-11e8-b8d5-2de829164969&quot; -H  &quot;accept: application/json&quot;
+</code></pre>
+
+<p>输出</p>
+<pre><code>{
+  &quot;result&quot;: {
+    &quot;type&quot;: &quot;CHAINCODE_INVOKE&quot;,
+    &quot;chaincodeID&quot;: &quot;cGF0aDogInBhdGgiCm5hbWU6ICJhZGRkODNkYTljMDY1YzE5ZTFlMzkyY2Q4ZGNhMGQ1MjY4Mzk4YTExZmNiNjU0ZTVmMWMxYWE3MzFhMGFjMDVjIgo=&quot;,
+    &quot;payload&quot;: {
+      &quot;chaincodeID&quot;: {
+        &quot;path&quot;: &quot;path&quot;,
+        &quot;name&quot;: &quot;addd83da9c065c19e1e392cd8dca0d5268398a11fcb654e5f1c1aa731a0ac05c&quot;
+      },
+      &quot;ctorMsg&quot;: {
+        &quot;function&quot;: &quot;put_proof('cd300ff59c988ef1183c3dbd4318e502706881794249e734146cee51837e3dfb','eyJvd25lcl9hY2NvdW50X2FkZHJlc3MiOiIxTUg5eGVkUFRrV1RoSlVnVDhaWWVoaUdDTTdiRVpUVkdOIiwiaGFzaF9hbGdvcml0aG0iOnsibmFtZSI6InNoYTI1NiIsInBhcmFtZXRlciI6IiJ9LCJwaWN0dXJlX2RpZ2l0YWxfaWRlbnRpdHkiOiJjZDMwMGZmNTljOTg4ZWYxMTgzYzNkYmQ0MzE4ZTUwMjcwNjg4MTc5NDI0OWU3MzQxNDZjZWU1MTgzN2UzZGZiIiwicGljdHVyZV9kZXNjIjp7ImF1dGhvciI6InZpYyIsIm5hbWUiOiLlj6/op4bljJbnlYzpnaIiLCJkZXNjIjoiIiwiZmlsZV90eXBlIjoiaW1hZ2UvcG5nIiwiZmlsZV9zaXplIjoyODgxNH19');&quot;
+      },
+      &quot;timeout&quot;: 1000,
+      &quot;secureContext&quot;: &quot;secureContext&quot;,
+      &quot;codePackage&quot;: &quot;c3RyaW5n&quot;
+    },
+    &quot;metadata&quot;: &quot;rO0ABXNyACBzY2FsYS5jb2xsZWN0aW9uLm11dGFibGUuSGFzaE1hcAAAAAAAAAABAwAAeHB3DQAAAu4AAAABAAAABAB0AINjX2FkZGQ4M2RhOWMwNjVjMTllMWUzOTJjZDhkY2EwZDUyNjgzOThhMTFmY2I2NTRlNWYxYzFhYTczMWEwYWMwNWNfY2QzMDBmZjU5Yzk4OGVmMTE4M2MzZGJkNDMxOGU1MDI3MDY4ODE3OTQyNDllNzM0MTQ2Y2VlNTE4MzdlM2RmYnB4&quot;,
+    &quot;txid&quot;: &quot;f1b88720-4443-11e8-b8d5-2de829164969&quot;,
+    &quot;timestamp&quot;: &quot;2018-04-20T02:38:44.370Z&quot;,
+    &quot;confidentialityLevel&quot;: &quot;CONFIDENTIAL&quot;,
+    &quot;confidentialityProtocolVersion&quot;: &quot;confidentialityProtocolVersion-1.0&quot;,
+    &quot;nonce&quot;: &quot;bm9uY2U=&quot;,
+    &quot;toValidators&quot;: &quot;dG9WYWxpZGF0b3Jz&quot;,
+    &quot;cert&quot;: &quot;MU1IOXhlZFBUa1dUaEpVZ1Q4WlllaGlHQ003YkVaVFZHTg==&quot;,
+    &quot;signature&quot;: &quot;MEYCIQCjt0IjQfJbJSOChnLHXAWIqFqN3NYQhGEvRp7O7LzUWQIhAO6pkOjpKeSjDeRADu7MLMsbfrH3n1Tz2kqd3Ei/VfFf&quot;
+  }
+}
+</code></pre>
+
+<p><strong>7. 查询证书短地址</strong></p>
+<p><strong>接口描述</strong></p>
+<p>本接口用于用于查询指定ID的区块详细信息</p>
+<p>接口请求域名：http://www.repchain.net.org/certAddr/getAddrByCert</p>
+<p><em>输入参数</em></p>
+<p>输入参数</p>
+<table>
+    <tr>
+        <td>参数名</td>
+        <td>是否必须</td>
+        <td>参数类型</td>
+        <td>参数格式</td>
+        <td>参数说明</td>
+    </tr>
+    <tr>
+        <td>body</td>
+        <td>是</td>
+        <td>JSON</td>
+        <td>
+            {
+            &emsp;"cert":"string"</br>
+            &emsp;"cid":"string"</br>
+            }
+        </td>
+        <td>cert：证书的base64位hash</td>
+    </tr>
+</table>
+
+<p>输出参数</p>
+<table>
+<thead>
+<tr>
+<th align="center">参数名</th>
+<th align="center">参数类型</th>
+<th align="center">参数说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">code</td>
+<td align="center">int</td>
+<td align="center">错误码；200：成功；其它：失败</td>
+</tr>
+<tr>
+<td align="center">addr</td>
+<td align="center">string</td>
+<td align="center">证书短地址</td>
+</tr>
+<tr>
+<td align="center">err</td>
+<td align="center">string</td>
+<td align="center">错误描述字符串</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例</strong></p>
+<p>输入</p>
+<pre><code>POST &quot;http://localhost:8081/certAddr/getAddrByCert&quot; -H  &quot;accept: application/json&quot; -H  &quot;content-type: application/json&quot; -d 
+&quot;{  \&quot;cert\&quot;: &quot;LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJtakNDQVQrZ0F3SUJBZ0lFV1dWK0F6QUtCZ2dxaGtqT1BRUURBakJXTVFzd0NRWURWUVFHRXdKamJqRUxNQWtHQTFVRUNBd0NZbW94Q3pBSkJnTlZCQWNNQW
+1KcU1SRXdEd1lEVlFRS0RBaHlaWEJqYUdGcGJqRU9NQXdHQTFVRUN3d0ZhWE5qWVhNeENqQUlCZ05WQkFNTUFURXdIaGNOTVRjd056RXlNREUwTWpFMVdoY05NVGd3TnpFeU1ERTBNakUxV2pCV01Rc3dDUVlEVlFRR0V3SmpiakVMTUFrR0
+ExVUVDQXdDWW1veEN6QUpCZ05WQkFjTUFtSnFNUkV3RHdZRFZRUUtEQWh5WlhCamFHRnBiakVPTUF3R0ExVUVDd3dGYVhOallYTXhDakFJQmdOVkJBTU1BVEV3VmpBUUJnY3Foa2pPUFFJQkJnVXJnUVFBQ2dOQ0FBVDZWTEUvZUY5K3NLMVJ
+PbjhuNng3aEtzQnhlaFc0MnFmMUlCOHF1Qm41T3JRRDN4Mkg0eVpWRHdQZ2NFVUNqSDhQY0Znc3dkdGJvOEpMLzdmNjZ5RUNNQW9HQ0NxR1NNNDlCQU1DQTBrQU1FWUNJUUN1ZCs0LzNuam5mVWtHOWZmU3FjSGhuc3VaTk1Rd2FXNjJFVlhi
+Y2pvaUJnSWhBUG9MSksxRDA2SU1vaG9sWWNzZ1RRYjVUcnJlai9lclpPTk1tMWNTMWlQKwotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0t\&quot;,  \&quot;cid\&quot;: \&quot;string\&quot;}&quot;
+</code></pre>
+
+<p>输出</p>
+<pre><code>{
+  &quot;addr&quot;: &quot;1MH9xedPTkWThJUgT8ZYehiGCM7bEZTVGN&quot;,
+  &quot;err&quot;: &quot;&quot;
+}
+</code></pre>
+
+<p><strong>8. 根据证书短地址查询证书字符串</strong></p>
+<p><strong>接口描述</strong></p>
+<p>本接口用于用于查询指定ID的区块详细信息</p>
+<p>接口请求域名：http://www.repchain.net.org/certAddr/getCertByAddr</p>
+<p>输入参数</p>
+<table>
+    <tr>
+        <td>参数名</td>
+        <td>是否必须</td>
+        <td>参数类型</td>
+        <td>参数格式</td>
+        <td>参数说明</td>
+    </tr>
+    <tr>
+        <td>body</td>
+        <td>是</td>
+        <td>JSON</td>
+        <td>
+            {
+            &emsp;"addr":"string"</br>
+            &emsp;"cid":"string"</br>
+            }
+        </td>
+        <td>
+            "addr"：证书短地址</br>
+            "cid"：chaincodeId
+        </td>
+    </tr>
+</table>
+
+<p>输出参数</p>
+<table>
+<thead>
+<tr>
+<th align="center">参数名</th>
+<th align="center">参数类型</th>
+<th align="center">参数说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">code</td>
+<td align="center">int</td>
+<td align="center">错误码；200：成功；其它：失败</td>
+</tr>
+<tr>
+<td align="center">addr</td>
+<td align="center">string</td>
+<td align="center">证书短地址</td>
+</tr>
+<tr>
+<td align="center">cert</td>
+<td align="center">string</td>
+<td align="center">证书字符串</td>
+</tr>
+<tr>
+<td align="center">cid</td>
+<td align="center">string</td>
+<td align="center">chaincodeId</td>
+</tr>
+<tr>
+<td align="center">err</td>
+<td align="center">string</td>
+<td align="center">错误描述字符串</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例</strong></p>
+<pre><code>POST &quot;http://localhost:8081/certAddr/getCertByAddr&quot; -H  &quot;accept: application/json&quot; -H  &quot;content-type: application/json&quot; -d \
+&quot;{  \&quot;addr\&quot;: \&quot;string\&quot;,  \&quot;cid\&quot;: \&quot;addd83da9c065c19e1e392cd8dca0d5268398a11fcb654e5f1c1aa731a0ac05c\&quot;}&quot;
+</code></pre>
+
+<p>输出</p>
+<pre><code>{
+  &quot;addr&quot;: &quot;string&quot;,
+  &quot;cert&quot;: &quot;&quot;,
+  &quot;cid&quot;: &quot;addd83da9c065c19e1e392cd8dca0d5268398a11fcb654e5f1c1aa731a0ac05c&quot;,
+  &quot;err&quot;: &quot;不存在证书&quot;
+}
+</code></pre>
+
+<h3 id="232">2.3.2 交易发起</h3>
+<p><strong>1. deploy</strong></p>
+<p><strong>接口描述</strong></p>
+<p>本接口（deploy）用于部署链码，其将Shim接口中的方法部署到Sandbox中隔离运行，供invoke调用。</p>
+<p>接口请求域名：http://www.repchain.net.org/transaction/</p>
+<p>输入参数</p>
+<table>
+    <tr>
+        <td>参数名</td>
+        <td>是否必须</td>
+        <td>参数类型</td>
+        <td>参数格式</td>
+        <td>参数说明</td>
+    </tr>
+    <tr>
+        <td>body</td>
+        <td>是</td>
+        <td>JSON</td>
+        <td>
+            {</br>
+            &emsp;"stype":1</br>
+            &emsp;"idPath":"string"</br>
+            &emsp;"idName":"string"</br>
+            &emsp;"iptFunc":"string"</br>
+            &emsp;"iptArgs":["string"]</br>
+            &emsp;"timeout":0</br>
+            &emsp;"secureContext":"string"</br>
+            &emsp;"code":"string"</br>
+            &emsp;"ctype":0</br>
+            }
+        </td>
+        <td>
+            "stype"：1:deploy;2:invoke</br>
+            "code"：部署的链码</br>
+            "ctype":合约类型：0：javascript;1:scala
+        </td>
+    </tr>
+</table>
+
+<p>输出参数</p>
+<table>
+<thead>
+<tr>
+<th align="center">参数名</th>
+<th align="center">参数类型</th>
+<th align="center">参数说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">code</td>
+<td align="center">int</td>
+<td align="center">错误码；200：成功；其它：失败</td>
+</tr>
+<tr>
+<td align="center">txid</td>
+<td align="center">string</td>
+<td align="center">本次交易的ID</td>
+</tr>
+<tr>
+<td align="center">result</td>
+<td align="center">JSON</td>
+<td align="center">交易结果</td>
+</tr>
+<tr>
+<td align="center">ol</td>
+<td align="center">JSON数组</td>
+<td align="center">oldValue/newValue</td>
+</tr>
+<tr>
+<td align="center">err</td>
+<td align="center">string</td>
+<td align="center">错误描述字符串</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例</strong></p>
+<p>输入</p>
+<pre><code>POST &quot;http://localhost:8081/transaction/postTran&quot; -H  &quot;accept: application/json&quot; -H  &quot;content-type: application/json&quot; -d \
+&quot;{  \&quot;stype\&quot;: 1,  \&quot;idPath\&quot;: \&quot;\&quot;,  \&quot;iptFunc\&quot;: \&quot;\&quot;,  \&quot;iptArgs\&quot;: [],  \&quot;timeout\&quot;: 0,  \&quot;secureContext\&quot;: \&quot;string\&quot;,  \&quot;code\&quot;: \&quot; \
+function write(pm){for(x in pm){shim.setVal(x,pm[x]);}} function read(pn){return shim.getVal(pn);}\&quot;  \&quot;ctype\&quot;: 0}&quot;
+</code></pre>
+
+<p>输出</p>
+<pre><code>{
+  &quot;txid&quot;: &quot;9354e6c8a5e1b73ce319b6afd29bbc1f54b4ed064c785b9d3f913ea90e0fb23c&quot;,
+  &quot;result&quot;: &quot;9354e6c8a5e1b73ce319b6afd29bbc1f54b4ed064c785b9d3f913ea90e0fb23c&quot;,
+  &quot;ol&quot;: [
+    {
+      &quot;key&quot;: &quot;c_9354e6c8a5e1b73ce319b6afd29bbc1f54b4ed064c785b9d3f913ea90e0fb23c&quot;,
+      &quot;oldValue&quot;: null,
+      &quot;newValue&quot;: [
+        57, 51, 53, 52, 101, 54, 99, 56, 97, 53, 101, 49, 98, 55, 51,
+        99, 101, 51, 49, 57, 98, 54, 97, 102, 100, 50, 57, 98, 98, 99,
+        49, 102, 53, 52, 98, 52, 101, 100, 48, 54, 52, 99, 55, 56, 53,
+        98, 57, 100, 51, 102, 57, 49, 51, 101, 97, 57, 48, 101, 48, 102,
+        98, 50, 51, 99 ]
+    }
+  ]
+}
+</code></pre>
+
+<p><strong>2. invoke</strong></p>
+<p><strong>接口描述</strong></p>
+<p>本接口（deploy）用于调用链码，其将调用deploy中部署的方法对账本状态查询或更改。</p>
+<p>接口请求域名：http://www.repchain.net.org/transaction/</p>
+<p>输入参数</p>
+<table>
+    <tr>
+        <td>参数名</td>
+        <td>是否必须</td>
+        <td>参数类型</td>
+        <td>参数格式</td>
+        <td>参数说明</td>
+    </tr>
+    <tr>
+        <td>body</td>
+        <td>是</td>
+        <td>JSON</td>
+        <td>
+            {</br>
+            &emsp;"stype":2</br>
+            &emsp;"idPath":"string"</br>
+            &emsp;"idName":"string"</br>
+            &emsp;"iptFunc":"string"</br>
+            &emsp;"iptArgs":["string"]</br>
+            &emsp;"timeout":0</br>
+            &emsp;"secureContext":"string"</br>
+            &emsp;"code":"string"</br>
+            &emsp;"ctype":0</br>
+            }
+        </td>
+        <td>
+            "stype"：1:deploy;2:invoke</br>
+            "idName"：要调用的链码ID</br>
+            "ctype":合约类型：0：javascript;1:scala
+        </td>
+    </tr>
+</table>
+
+<p>输出参数</p>
+<table>
+<thead>
+<tr>
+<th align="center">参数名</th>
+<th align="center">参数类型</th>
+<th align="center">参数说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">code</td>
+<td align="center">int</td>
+<td align="center">错误码；200：成功；其它：失败</td>
+</tr>
+<tr>
+<td align="center">txid</td>
+<td align="center">string</td>
+<td align="center">本次交易的ID</td>
+</tr>
+<tr>
+<td align="center">result</td>
+<td align="center">JSON</td>
+<td align="center">交易结果</td>
+</tr>
+<tr>
+<td align="center">ol</td>
+<td align="center">JSON数组</td>
+<td align="center">oldValue/newValue</td>
+</tr>
+<tr>
+<td align="center">err</td>
+<td align="center">string</td>
+<td align="center">错误描述字符串</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例</strong></p>
+<p>输入</p>
+<pre><code>POST &quot;http://localhost:8081/transaction/postTran&quot; -H  &quot;accept: application/json&quot; -H  &quot;content-type: application/json&quot; -d &quot; \
+{  \&quot;stype\&quot;: 2,  \&quot;idPath\&quot;: \&quot;\&quot;,  \&quot;idName\&quot;: \&quot;9354e6c8a5e1b73ce319b6afd29bbc1f54b4ed064c785b9d3f913ea90e0fb23c\&quot;,  \&quot;iptFunc\&quot;: \&quot;write({'test1':10000}); \
+read('test1');\&quot;,  \&quot;iptArgs\&quot;: [],  \&quot;timeout\&quot;: 0,  \&quot;secureContext\&quot;: \&quot;string\&quot;,  \&quot;code\&quot;: \&quot;string\&quot;  \&quot;ctype\&quot;: 0}&quot;
+</code></pre>
+
+<p>输出</p>
+<pre><code>{
+  &quot;txid&quot;: &quot;ef3388a0-0637-11e8-bc31-0f000027000a&quot;,
+  &quot;result&quot;: 10000,
+  &quot;ol&quot;: [
+    {
+      &quot;key&quot;: &quot;test1&quot;,
+      &quot;oldValue&quot;: [49, 48, 48, 48],
+      &quot;newValue&quot;: [49, 48, 48, 48, 48]
+    }
+  ]
+}
+</code></pre>
+
+<h2 id="24">2.4 错误码</h2>
+<table>
+<thead>
+<tr>
+<th align="center">错误码</th>
+<th align="left">错误描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">200</td>
+<td align="left">成功</td>
+</tr>
+<tr>
+<td align="center">400</td>
+<td align="left">Bad Request</td>
+</tr>
+<tr>
+<td align="center">500</td>
+<td align="left">Internal Server Error：一般是请求参数类型错误</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../repChainApiDesign/" class="btn btn-neutral" title="repChain接口设计"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/daiyongbing/baasapidoc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../repChainApiDesign/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
+
+</body>
+</html>
