@@ -2,17 +2,17 @@ site_name: BaaSApi接口文档
 site_url: https://bassapidoc.github.io/bassapidoc/
 repo_url: https://github.com/daiyongbing/baasapidoc
 site_description: 'BaaSApi接口文档'
-
-site_author: 
-copyright: 
-
 theme: readthedocs
 
 pages:
-    - 欢迎: index.md
-    - repChain接口设计: repChainApiDesign.md
-    - API使用说明: APIInstructions.md
+    - '欢迎使用享链云平台': 'index.md'
+    - RepChain接口设计:
+        - '外部接口': 'externalApi.md'
+        - '内部接口': 'innerApi.md'
+    - Api使用说明: 
+        - '简介': 'intro.md'
+        - '概览': 'ApiOverview.md'
+        - '交易相关接口': 'transactionRelatedAPIs.md'
+        - '错误码': 'errCode.md'
+    
 
-markdown_extensions:
-  - extra
-  - tables
